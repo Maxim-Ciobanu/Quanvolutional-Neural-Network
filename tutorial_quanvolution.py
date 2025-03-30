@@ -94,7 +94,13 @@ n_layers = 1    # Number of random layers
 n_train = 50    # Size of the train dataset
 n_test = 30     # Size of the test dataset
 
-SAVE_PATH = "../_static/demonstration_assets/quanvolution/"  # Data saving folder
+# SAVE_PATH = "../_static/demonstration_assets/quanvolution/"  # Data saving folder
+SAVE_PATH = "my_path/"  # Data saving folder
+# If the folder does not exist, create it
+import os
+
+os.makedirs(SAVE_PATH, exist_ok=True)
+
 PREPROCESS = True           # If False, skip quantum processing and load data from SAVE_PATH
 np.random.seed(0)           # Seed for NumPy random number generator
 tf.random.set_seed(0)       # Seed for TensorFlow random number generator
@@ -340,7 +346,7 @@ c_history = c_model.fit(
 
 import matplotlib.pyplot as plt
 
-plt.style.use("seaborn")
+# plt.style.use("seaborn")
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6, 9))
 
 ax1.plot(q_history.history["val_accuracy"], "-ob", label="With quantum layer")
